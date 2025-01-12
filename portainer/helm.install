@@ -1,0 +1,6 @@
+helm repo add portainer https://portainer.github.io/k8s/
+helm repo update
+
+helm upgrade --install --create-namespace -n portainer portainer portainer/portainer-ce --set tls.force=true --set image.tag=2.24.0
+
+portainer/portainer-ce:2.24.0

@@ -1,0 +1,2 @@
+https://docs.sonarsource.com/sonarqube/9.6/setup-and-upgrade/deploy-on-kubernetes/deploy-sonarqube-on-kubernetes/
+https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/deploy-on-kubernetes/server/installing-helm-chart/

@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portainer-ingress
+  namespace: portainer
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules:
+  - host: portainer.e-humanist.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: portainer
+            port:
+              number: 30779
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - portainer.e-humanist.com
+    secretName: portainer-secret
+status:
+  loadBalancer:
+    ingress:
+    - hostname: portainer.e-humanist.com

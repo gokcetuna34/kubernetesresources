@@ -1,0 +1,21 @@
+FROM jenkins/inbound-agent:3273.v4cfe589b_fd83-1
+USER root
+
+RUN . /etc/os-release
+
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+RUN chmod 700 get_helm.sh
+RUN ./get_helm.sh
+
+RUN apt-get update
+RUN apt-get install azure-cli -y
+
+RUN apt-get update
+RUN apt-get install podman -y
+
+#RUN chmod a+rwx /var
+
+USER jenkins
